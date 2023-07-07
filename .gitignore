@@ -7,3 +7,6 @@ data/languages/spu.sla
 .gradle/
 build/
 dist/
+
+# VS Code
+.vscode/

@@ -7,6 +7,8 @@ import ghidra.program.model.address.Address;
 import ghidra.program.model.listing.Program;
 import ghidra.program.model.mem.Memory;
 import ghidra.program.model.mem.MemoryAccessException;
+import ghidra.program.model.reloc.Relocation.Status;
+import ghidra.program.model.reloc.RelocationResult;
 import ghidra.util.exception.NotFoundException;
 
 public class SPU_ElfRelocationHandler extends ElfRelocationHandler {
@@ -16,7 +18,8 @@ public class SPU_ElfRelocationHandler extends ElfRelocationHandler {
     }
 
     @Override
-    public void relocate(ElfRelocationContext elfRelocationContext, ElfRelocation relocation,
+    public RelocationResult relocate(ElfRelocationContext elfRelocationContext,
+                    ElfRelocation relocation,
                     Address relocationAddress) throws MemoryAccessException, NotFoundException {
         Program program = elfRelocationContext.getProgram();
         Memory memory = program.getMemory();
@@ -31,6 +34,8 @@ public class SPU_ElfRelocationHandler extends ElfRelocationHandler {
         
         int oldValue = memory.getInt(relocationAddress);
         int newValue = 0;
+        int byteLength = 4;
+
 
         switch (type) {
             case SPU_ElfRelocationConstants.R_SPU_ADDR10:
@@ -121,5 +126,6 @@ public class SPU_ElfRelocationHandler extends ElfRelocationHandler {
                         elfRelocationContext.getLog());
                 break;
         }
+        return new RelocationResult(Status.APPLIED, byteLength);
     }
 }
