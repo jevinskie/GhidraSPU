@@ -1,4 +1,4 @@
-package spu.relocation;
+package ghidra.app.util.bin.format.elf.relocation;
 
 public class SPU_ElfRelocationConstants {
     public static final int R_SPU_NONE = 0;

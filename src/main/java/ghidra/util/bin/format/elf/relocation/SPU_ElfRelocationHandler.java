@@ -1,4 +1,4 @@
-package spu.relocation;
+package ghidra.app.util.bin.format.elf.relocation;
 
 import ghidra.app.util.bin.format.elf.*;
 import ghidra.app.util.bin.format.elf.relocation.ElfRelocationContext;
