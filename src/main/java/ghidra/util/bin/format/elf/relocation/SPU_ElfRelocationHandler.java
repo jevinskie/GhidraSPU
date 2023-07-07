@@ -14,7 +14,7 @@ import ghidra.util.exception.NotFoundException;
 public class SPU_ElfRelocationHandler extends ElfRelocationHandler {
     @Override
     public boolean canRelocate(ElfHeader elf) {
-        return elf.e_machine() == SPU_ElfConstants.EM_SPU;
+        return elf.e_machine() == ElfConstants.EM_SPU;
     }
 
     @Override
